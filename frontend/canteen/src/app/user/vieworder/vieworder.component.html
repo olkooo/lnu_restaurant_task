@@ -15,7 +15,7 @@
               <th scope="col">Item Name</th>
               <th scope="col">Quantity</th>
               <th scope="col">Item Price</th>
-              <th scope="col">Delete Item</th>
+
             </tr>
           </thead>
           <tbody>
@@ -30,8 +30,8 @@
                 <span>{{item.foodqty}}</span>
                 <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
               </td>
-              <td>{{item.foodprice}}  $</td>
-              <td><i class="fa fa-trash" id="delete" (click)="delete(item)" aria-hidden="true"></i></td>
+              <td>{{item.foodprice}} $</td>
+
             </tr>
           </tbody>
         </table>
@@ -49,10 +49,7 @@
         <div class="info">
 
           <p style="margin-top: 5px;margin-bottom: 5px;">total = <b><span>{{total}}</span></b></p>
-          <!-- <p style="margin-top: 5px;margin-bottom: 5px;">tax = <b><span>2</span>Rs</b></p> -->
-          <p style="margin-top: 5px;margin-bottom: 5px;">grand total =<b><span class="gt">{{total}}</span></b></p>
-          <button class="btn btn-success" id="last" style="margin-top: 5px;margin-bottom: 5px;"
-            (click)="placeorder()" style="color: white;">Check out</button>
+
         </div>
       </div>
 

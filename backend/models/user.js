@@ -5,7 +5,6 @@ var userSchema = mongoose.Schema({
     
     contact: {
         type: String,
-        required: true,
     },
     name: {
         type: String,

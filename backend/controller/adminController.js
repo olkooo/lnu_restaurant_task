@@ -31,13 +31,13 @@ exports.addFood = async (req, res) => {
         // **********************
         try {
             const image = req.file
-            const imageUrl = await fileUploadmiddleware.uploadImage(image)
+            // const imageUrl = await fileUploadmiddleware.uploadImage(image)
             var food = new Food({
                 foodname: req.body.foodname,
                 foodqty: qty,
                 foodprice: req.body.foodprice,
                 // foodimage: file.filename,
-                foodimage: imageUrl,
+                // foodimage: imageUrl,
                 foodavail: avail,
                 unlimited: limit
             })
@@ -49,12 +49,12 @@ exports.addFood = async (req, res) => {
                 return res.json({ msg: 'Food added' });
             }
             catch (err) {
-                console.log("some error while adding food by admin")
+                console.log(err)
                 return res.json({ errormsg: 'Somthing went wrong' });
             }
         }
         catch (err) {
-            console.log("some error while adding food by admin")
+            console.log(err)
             return res.json({ errormsg: 'Somthing went wrong' });
         }
         // **********************

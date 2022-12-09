@@ -1,53 +1,62 @@
-<app-admin-nav></app-admin-nav>
+<app-user-nav></app-user-nav>
 <div *ngIf="loading; then thenBlock else myelseBlock"></div>
 <ng-template #thenBlock>
   <app-loading></app-loading>
 </ng-template>
 <ng-template #myelseBlock>
   <div *ngIf="empty; else elseBlock" style="overflow-x: hidden;">
+
+
     <div style="margin-top: 50px;" class="d-flex justify-content-center">
       <div class="row">
         <div class="col">
-          <h3 class="text-center mb-5 animated pulse infinite" style="color: #2f2e41;">Seems Like Empty Feedback
-            List!!!!
+          <h3 class="text-center mb-5 animated pulse infinite" style="color: #2f2e41;">Seems Like Empty Orderlist!!!!
           </h3>
           <img src="./assets/img/empty.svg" alt="" class="img-fluid "
             style="max-height: 500px;">
         </div>
       </div>
     </div>
+
   </div>
 
   <ng-template #elseBlock>
-
     <div class="container" id="container">
+
       <div class="row">
         <div class="col-12">
+
           <table class="table table-image">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Feedback</th>
-                <th scope="col">Date</th>
-                <th scope="col">Delete</th>
+                <th scope="col">Order Id</th>
+                <th scope="col">Order Status</th>
+                <th scope="col">Payment Status</th>
+                <th scope="col">View Order</th>
+                <th scope="col">Total</th>
+                <th scope="col">Make Payment</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of items;index as i">
+              <tr *ngFor="let item of orders;index as i" class="{{item.status}}">
                 <th scope="row">{{i+1}}</th>
-                <td class="name" (click)="viewuser(item)">{{item.name}}</td>
-                <td style="min-width: 200px;" class="email" (click)="viewuser(item)">{{item.useremail}}</td>
-                <td style="min-width: 200px;">
-                  {{item.feedback}}
+                <td>{{item._id}}</td>
+                <td>
+                  {{item.status}}
+                </td>
+                <td class="{{item.paymentstatus}}">
+                  {{item.paymentstatus}}
                 </td>
                 <td>
-                  {{item.date}}
+                  <i class="fa fa-eye" (click)="vieworder(item)" id="view" aria-hidden="true"></i>
                 </td>
+                <td>{{item.total}}</td>
                 <td>
-                  <i id="delete" (click)="deletefeedback(item)" class="fa fa-trash" aria-hidden="true"></i>
+                  <button class="btn btn-link" (click)="makepayment(item)" [disabled]="paymentAry[i]"><i class="fa fa-credit-card"
+                      id="view" aria-hidden="true"></i></button>
                 </td>
+
               </tr>
             </tbody>
           </table>
@@ -55,6 +64,8 @@
       </div>
     </div>
   </ng-template>
+
+
   <div class="errors" *ngIf="errorMessage">
     <app-message-box [message]="errorMessage" [styl]="styl"></app-message-box>
   </div>

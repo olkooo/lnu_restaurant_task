@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
         else {
             user.save((error, registeredUser) => {
                 if (error) {
-                    console.log("some error");
+                    console.log(error);
                     res.json({ msg: "some error!" });
                 }
                 else {
